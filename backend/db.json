@@ -1,0 +1,47 @@
+{
+  "student": [
+    {
+      "id": 1,
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "course": "java"
+    },
+    {
+      "id": 2,
+      "name": "Shyam",
+      "email": "shyam@gmail.com",
+      "course": "Cloud"
+    }
+  ],
+  "register": [
+    {
+      "id": 1,
+      "name": "SAM",
+      "email": "SAM@GMAIL.COM",
+      "password": "sam@123 ",
+      "confirmPassword": "sam@123"
+    },
+    {},
+    {
+      "id": 2,
+      "name": "David",
+      "email": "david@gmail.com",
+      "password": "david@123",
+      "confirmPassword": "david@123"
+    },
+    {
+      "id": 3,
+      "name": "dd",
+      "email": "d@gmail.comm",
+      "password": "d@123",
+      "confirmPassword": "d@123"
+    },
+    {
+      "id": 4,
+      "name": "dd",
+      "email": "d@gmail.comm",
+      "password": "d@123",
+      "confirmPassword": "d@123"
+    }
+  ]
+}
