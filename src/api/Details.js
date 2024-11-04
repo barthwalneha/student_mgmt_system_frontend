@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 const Details = () => {
   const [data, setData] = useState([]);
@@ -31,18 +32,87 @@ const Details = () => {
     navigate("/edit/" + id);
   };
 
+  // Filter RECORDS
+
+  const [value, setValue] = useState("");
+  const filterRecords = async (e) => {
+    e.preventDefault();
+    return await axios
+      .get(`http://localhost:3001/student?q=${value}`)
+      .then((res) => {
+        setData(res.data);
+        setValue("");
+      });
+  };
+
+  const reset = () => {
+    fetch("http://localhost:3001/student", { method: "GET" })
+      .then((result) => {
+        return result.json();
+      })
+      .then((response) => {
+        console.log(response);
+        setData(response);
+      });
+  };
+
+  // Sort records
+  let options = ["name", "email", "course"];
+  const [sort, setSort] = useState("");
+  const sortRecord = async (e) => {
+    e.preventDefault();
+    let value = e.target.value;
+    setSort(value);
+    await axios
+      .get(`http://localhost:3001/student?_sort=${value}& _order=asc`)
+      .then((res) => {
+        setData(res.data);
+        setValue("");
+      });
+  };
+
   return (
     <div>
       <h1 class="text-center fs-1 fw-bold text-primary mt-5 mb-3">
-        Besant Technologies{" "}
+        Besant Technologies
       </h1>
-      <navigate to="/add">
-        <button className="btn btn-primary w-1  " type="button">
-          Add+
+      {/* FILTER RECORDS start */}
+      <form onSubmit={filterRecords}>
+        <input
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          type="text"
+          class="w-25 mx-3 my-2 "
+          placeholder="Filter Records ......."
+        ></input>
+        <br />
+        <button type="submit" class="btn btn-success mb-3 ms-3 ">
+          Search
         </button>
-      </navigate>
+        <button onClick={reset} type="reset" class="btn btn-success mb-3 ms-3 ">
+          Reset
+        </button>
+      </form>
 
-      <div className="table-responsive">
+      {/* SORT  */}
+
+      <select value={sort} onChange={sortRecord}>
+        <option>Choose any one ....</option>
+        {options.map((option) => (
+          <option>{option} </option>
+        ))}
+      </select>
+      <br />
+
+      <Link to="/add">
+        <button className="btn btn-warning w-2 mt-5 mb-2" type="button">
+          Add New+
+        </button>
+      </Link>
+
+      <div className="table-responsive ">
         <table className="table table-bordered table-hover vh-50">
           <thead>
             <tr>

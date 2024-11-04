@@ -4,13 +4,25 @@
       "id": 1,
       "name": "Ram",
       "email": "ram@gmail.com",
-      "course": "java"
+      "course": "Java"
     },
     {
       "id": 2,
       "name": "Shyam",
       "email": "shyam@gmail.com",
       "course": "Cloud"
+    },
+    {
+      "id": 3,
+      "name": "A",
+      "email": "a@yahoo.com",
+      "course": "AI&ML"
+    },
+    {
+      "id": 4,
+      "name": "B",
+      "email": "z@gmail.co",
+      "course": "B"
     }
   ],
   "register": [
